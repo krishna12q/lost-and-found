@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'Inter'; /* Give it any name you like */
+  src: url('Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+}
+
+
+* {
+    font-family: 'Inter';
+    line-height: 1.0;
+    color: #5E548E;
+}
+
+#heading {
+    margin-bottom: -15px;
+}
+
+hr {
+  border: none;               /* 1. Remove the default browser border */
+  height: 2px;               /* 2. Give it a physical height */
+  background-color: #5E548E; /* 3. Apply your color */
+}
+
+#container {
+    border:3px solid #9F86C0;
+    width:45%;
+    display:inline-block;
+    margin:1.5%;
+    padding-left:10px;
+}
+
+button {
+    background: #9F86C0;
+    color: white;
+    border:#5E548E;
+    border-radius: 12px;
+    height: 35px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    transition: color 0.70s, background 0.70s;
+}
+
+img { 
+    margin-bottom: 5px;
+
+
+
+
+}
+
+button:hover {
+    color: white;
+    background: #5E548E;
+    border:#5E548E;
+    border-radius: 12px;
+    height: 35px;
+    margin-left: 5px;
+    scale: 1.1;
+}
+
+p {
+    font-weight: 400;
+}
+
+input {
+    padding: 3px;
+    border: 1px solid #5E548E;
+    border-radius: 9px;
+    color: #9F86C0;
+}
+
+input:focus {
+    outline: #5E548E;
+}
+
+table {
+  /* Merges cell borders into a single line */
+  border-collapse: collapse; 
+  text-align: center;
+}
+
+th, td {
+  /* Sets thickness, style, and color between cells */
+  border: 2px solid #5E548E; 
+  /* Optional: gives room to the content inside cells */
+  padding: 8px; 
+  text-align: center;
+}
+
+/* Fixes the text color and background color on autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #5E548E !important; /* Forces your purple text color */
+  box-shadow: 0 0 0px 1000px #EDF2FA inset !important; /* Overrides the blue background with a light tinted shade */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#kool{
+    font-size: 60px;
+}

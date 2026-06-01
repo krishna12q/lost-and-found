@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="kool">Admin Panel</h1>
+    <hr>
+    <h1>Graphs</h1>
+    <div style="display: inline-block;">
+    <p>{{ graph | safe }}</p>
+    </div>
+
+    <div style="display: inline-block;">
+    <p>{{ chart | safe }}</p>
+    </div>
+
+    <div style="display: inline-block;">
+    <p>{{ c2 | safe }}</p>
+    </div>
+    <hr>
+    <h1>Quick Stats</h1>
+    <p>Total Users:  {{totalusers}}</p>
+    <p>Total Articles Lost:  {{totallost}}</p>
+    <p>Total Articles Found:  {{totalfound}}</p>
+    <hr>
+
+
+    <h1>All Current Users</h1>
+
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>GRADE</th>
+            <th>ID</th>
+            <th>action</th>
+        </tr>
+    {% for user in users%}
+    <tr>
+        <td>{{user[1]}}</td>
+        <td>{{user[2]}}</td>
+        <td>{{user[0]}}</td>
+        <td><form action="/deleteuser" method="post">
+            <input type="hidden" name="id" value="{{ user[0] }}">
+            <button type="submit">DELETE</button>
+        </form></td>
+    </tr>
+    {%endfor%}
+    </table>
+
+<br>
+<hr>
+        <h1>All Current Lost Articles</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>DESCRIPTION</th>
+            <th>IMAGE</th>
+            <th>LOST ON</th>
+            <th>OWNED BY</th>
+            <th>ACTIONS</td>
+        </tr>
+    {% for user in lost_requests%}
+    <tr>
+        <td>ID-{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+        <td>{{user[2]}}</td>
+        <td><img src="static/uploads/{{user[3]}}" height="200px" width="200px"></td>
+        <td>Lost On {{user[4]}}</td>
+        <td>Owned By {{user[5]}}</td>
+        <td><form action="/deletelostreq" method="post">
+            <input type="hidden" name="id" value="{{ user[0] }}">
+            <button type="submit">DELETE</button>
+        </form></td>
+    </tr>
+    {%endfor%}
+    </table>
+    <hr>
+    <h1>All Current Found And Reported Articles</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>DESCRIPTION</th>
+            <th>IMAGE</th>
+            <th>FOUND ON</th>
+            <th>FOUND BY</th>
+            <th>ACTIONS</th>
+        </tr>
+    {% for user in found_requests%}
+    <tr>
+        <td>ID-{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+        <td>{{user[2]}}</td>
+        <td><img src="static/uploads/{{user[3]}}" height="200px" width="200px"></td>
+        <td>Lost On {{user[4]}}</td>
+        <td>Owned By {{user[5]}}</td>
+        <td><form action="/deletefound" method="post">
+            <input type="hidden" name="id" value="{{ user[0] }}">
+            <button type="submit">DELETE</button>
+        </form></td>
+    </tr>
+    {%endfor%}
+    </table>
+</body>
+</html>

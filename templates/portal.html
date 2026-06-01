@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+</head>
+<body>
+
+    <div style="display: inline-block;width: 77%;">
+        <h1 id = "heading">Hello, {{ username }}</h1>
+    </div>
+
+        <div style="display: inline-block">
+            <form action="/admpn" method="post">
+            <button type="submit">Admin Panel</button>
+        </form>
+    </div>
+
+    <div style="display: inline-block">
+            <form action="/mail" method="post">
+            <button type="submit">Check Mailbox</button>
+        </form>
+    </div>
+
+    <div style="display: inline-block">
+            <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <br>
+
+    <p>What do you need help with today</p>
+    <div style="display: inline-block;">
+            <form action="/gotol" method="post">
+            <button type="submit">Submit Lost Item</button>
+        </form>
+    </div>
+    <div style="display: inline-block;">
+        <form action="/gotof" method="post">
+            <button type="submit">Submit Found Item</button>
+        </form>
+    </div>
+    <br>
+    <hr>
+<h1>Reported Lost Items</h1>
+
+{% for item in lost_items %}
+
+<div id = "container">
+    <h1>{{ item[1] }}</h1>
+    <p>Description: {{ item[2] }}</p>
+    <p>Lost On: {{ item[4] }}</p>
+    <p>Belongs To: {{ item[5] }}</p>
+    <form method="post" action="/foundit">
+        <!-- Pass the item ID invisibly using item[0] -->
+        <input type="hidden" name="item_id" value="{{ item[0] }}">
+        <button type="submit">I found it.</button>
+    </form>
+    {% if item[3] %}
+        <img src="{{ url_for('static', filename='uploads/' + item[3]) }}" height="400px" width="400px" >
+    {% else %}
+        <p>No image uploaded</p>
+    {% endif %}
+
+</div>
+
+{% endfor %}
+<hr>
+<h1>Reported Found Items</h1>
+{% for item in found_items %}
+
+<div id = "container">
+    <h1>{{ item[1] }}</h1>
+    <p>Description: {{ item[2] }}</p>
+    <p>Found On: {{ item[4] }}</p>
+    <p>Found By: {{ item[5] }}</p>
+
+    {% if item[3] %}
+        <img src="{{ url_for('static', filename='uploads/' + item[3]) }}" height="400px" width="400px" >
+    {% else %}
+        <p>No image uploaded</p>
+    {% endif %}
+    <form action="/found" method="post"></form>
+</div>
+
+{% endfor %}
+
+
+</body>
+</html>

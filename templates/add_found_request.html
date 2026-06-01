@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <hr>
+    <h1>Found Article Request</h1>
+    <p>Please Refrain From Complaining About Small Things Such Simple Pens Or Stationary <br> And Claiming Things That Are Not Yours</p>
+    <hr>
+    <form action="/registerr" method="post" enctype="multipart/form-data">
+        <p>Article: <input type="text" name="article-name" value=""></p>
+        <p>Describe The Object: <textarea name="description" value="" cols="12" rows="4"></textarea></p>
+        <p>Date When The Article Was Found: </Object><input type="date" name="date"></p>
+        <p>Upload Image Of The Article (Optional): <input type="file" name="photo" accept="image/*"></p>
+        <button type="submit" name="submit">Add Request</button>
+    </form>
+    <hr>
+</body>
+</html>
