@@ -13,7 +13,7 @@ app.secret_key = "kool"
 # DATABASE SETUP
 # ---------------------------
 
-connection = sqlite3.connect('mydb.db')
+connection = sqlite3.connect("/data/mydb.db")
 cursor = connection.cursor()
 
 cursor.execute('''
@@ -66,7 +66,7 @@ connection.close()
 
 def get_items():
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute("SELECT * FROM lost_request")
@@ -104,7 +104,7 @@ def make_acc():
     pw = request.form.get('password')
     grade = request.form.get('grade')
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     try:
@@ -139,7 +139,7 @@ def clogin():
     pw = request.form.get('password')
     grade = request.form.get('grade')
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute(
@@ -187,7 +187,7 @@ def makereql():
     if not curruser:
         return "Login Required", 401
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     artn = request.form.get('article-name')
@@ -202,7 +202,7 @@ def makereql():
 
         filename = photo.filename
 
-        photo.save(f"static/uploads/{filename}")
+        photo.save(f"/data/uploads/{filename}")
 
     curr.execute(
         """
@@ -229,7 +229,7 @@ def makereqf():
     if not curruser:
         return "Login Required", 401
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")("/data/mydb.db")('mydb.db')
     curr = conn.cursor()
 
     artn = request.form.get('article-name')
@@ -244,7 +244,7 @@ def makereqf():
 
         filename = photo.filename
 
-        photo.save(f"static/uploads/{filename}")
+        photo.save(f"/data/uploads/{filename}")
 
     curr.execute(
         """
@@ -283,7 +283,7 @@ def sendmail():
     curruser = session.get("user")
     lost_item_id = request.form.get('item_id')
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute(
@@ -325,7 +325,7 @@ def sendmail():
 
 @app.route("/mail", methods=['POST'])
 def mail():
-    conn = sqlite3.connect("mydb.db")
+    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute(
@@ -346,7 +346,7 @@ def adminpanel():
 
     if session.get("user", "").lower() in ["adminsmis", "krishna", "bruh"]:
 
-        conn = sqlite3.connect("mydb.db")
+        conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")("/data/mydb.db")
         curr = conn.cursor()
 
         curr.execute("SELECT * FROM users")
@@ -438,7 +438,7 @@ def adminpanel():
 def deluser():
     id = request.form.get('id')
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")('mydb.db')
     curr = conn.cursor()
 
     curr.execute("DELETE FROM users WHERE id = ?",
@@ -455,7 +455,7 @@ def deluser():
 def dellost():
     id = request.form.get('id')
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")('mydb.db')
     curr = conn.cursor()
 
     curr.execute("DELETE FROM lost_request WHERE id = ?",
@@ -472,7 +472,7 @@ def dellost():
 def delfound():
     id = request.form.get('id')
 
-    conn = sqlite3.connect('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")('mydb.db')
     curr = conn.cursor()
 
     curr.execute("DELETE FROM found_request WHERE id = ?",
