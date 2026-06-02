@@ -8,6 +8,8 @@ app = Flask(__name__)
 app.secret_key = "kool"
 
 
+print("DATA EXISTS:", os.path.exists("/data"))
+print("UPLOAD EXISTS:", os.path.exists("/data/uploads"))
 
 # ---------------------------
 # DATABASE SETUP
