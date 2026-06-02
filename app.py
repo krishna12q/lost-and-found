@@ -229,7 +229,7 @@ def makereqf():
     if not curruser:
         return "Login Required", 401
 
-    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")("/data/mydb.db")('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     artn = request.form.get('article-name')
@@ -325,7 +325,7 @@ def sendmail():
 
 @app.route("/mail", methods=['POST'])
 def mail():
-    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")("/data/mydb.db")
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute(
@@ -344,9 +344,9 @@ def mail():
 @app.route("/admpn", methods=['POST'])
 def adminpanel():
 
-    if session.get("user", "").lower() in ["adminsmis", "krishna", "bruh"]:
+    if session.get("user", "").lower() in ["adminsmis", "krishna"]:
 
-        conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")("/data/mydb.db")
+        conn = sqlite3.connect("/data/mydb.db")
         curr = conn.cursor()
 
         curr.execute("SELECT * FROM users")
@@ -438,7 +438,7 @@ def adminpanel():
 def deluser():
     id = request.form.get('id')
 
-    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute("DELETE FROM users WHERE id = ?",
@@ -455,7 +455,7 @@ def deluser():
 def dellost():
     id = request.form.get('id')
 
-    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute("DELETE FROM lost_request WHERE id = ?",
@@ -472,7 +472,7 @@ def dellost():
 def delfound():
     id = request.form.get('id')
 
-    conn = sqlite3.connect("/data/mydb.db")("/data/mydb.db")('mydb.db')
+    conn = sqlite3.connect("/data/mydb.db")
     curr = conn.cursor()
 
     curr.execute("DELETE FROM found_request WHERE id = ?",
