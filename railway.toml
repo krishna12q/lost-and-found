@@ -1,0 +1,8 @@
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "python test.py"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "NEVER"
