@@ -1,6 +1,4 @@
-flask
-sqlite3
-datetime
-plotly.express
+Flask
+gunicorn
 plotly
 numpy

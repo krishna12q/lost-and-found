@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, session, redirect
 import sqlite3
 import plotly.express as px
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.secret_key = "kool"
@@ -306,8 +307,7 @@ def sendmail():
 
     madeby = curr.fetchone()[0]
 
-
-    message = f"{curruser} found your {lost_iname} on {datetime.now().strftime("%Y-%m-%d")} you both can meet and discuss it in school!"
+    message = f"{curruser} found your {lost_iname} on {datetime.now().strftime('%Y-%m-%d')} you both can meet and discuss it in school!"
 
     # 5. Insert variables into your found_request table
     curr.execute(""" 
@@ -490,4 +490,5 @@ def delfound():
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
