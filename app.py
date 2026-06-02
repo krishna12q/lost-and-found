@@ -7,6 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = "kool"
 
+os.makedirs("/data/uploads", exist_ok=True)
 
 print("DATA EXISTS:", os.path.exists("/data"))
 print("UPLOAD EXISTS:", os.path.exists("/data/uploads"))
