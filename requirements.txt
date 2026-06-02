@@ -3,3 +3,4 @@ sqlite3
 datetime
 plotly.express
 plotly
+numpy
