@@ -2,7 +2,7 @@
 builder = "RAILPACK"
 
 [deploy]
-startCommand = "python test.py"
+startCommand = "python app.py"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "NEVER"
